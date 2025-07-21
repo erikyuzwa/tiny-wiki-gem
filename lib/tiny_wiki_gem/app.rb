@@ -19,10 +19,24 @@ module TinyWikiGem
     # Enable sessions for flash messages (optional, but good for feedback)
     enable :sessions
 
+    # Custom Redcarpet renderer to handle wiki links (e.g., [[Page Name]])
+    class WikiLinkRenderer < Redcarpet::Render::HTML
+      # The postprocess method is called after all other rendering is complete.
+      # We use it to find and replace our custom wiki link syntax.
+      def postprocess(full_document)
+        full_document.gsub(/\[\[(.*?)\]\]/) do
+          page_name = $1.strip # Get the text inside the brackets
+          # Sanitize page name for URL: replace spaces with underscores, then URI encode
+          url_safe_page_name = URI.encode_www_form_component(page_name.gsub(' ', '_'))
+          "<a href=\"/#{url_safe_page_name}\">#{page_name}</a>"
+        end
+      end
+    end
+
     # Markdown renderer setup
     # Create a Redcarpet renderer that uses HTML with code highlighting and auto-links.
     # The `fenced_code_blocks` and `autolink` extensions are common and useful.
-    markdown_renderer = Redcarpet::Render::HTML.new(
+    markdown_renderer = WikiLinkRenderer.new(
       filter_html: true,
       hard_wrap: true,
       link_attributes: { rel: "nofollow", target: "_blank" },

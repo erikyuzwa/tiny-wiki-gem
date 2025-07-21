@@ -14,6 +14,11 @@ That's it! Open your web browser to `http://localhost:4567`
 The ruby gem will automatically use a `Home.md` as your main index file. If this
 doesn't exist, then you will be prompted to create a new one and update it!
 
+If you enter a wiki page url that does not yet have content, you will be directed
+to the new page editor!
+
+Make use of `[[target page]]` syntax to create embedded links to other wiki pages.
+
 ## Development Notes
 
 - `git clone git@github.com:erikyuzwa/tiny-wiki-gem.git`

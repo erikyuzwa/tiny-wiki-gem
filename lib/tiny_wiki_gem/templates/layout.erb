@@ -19,6 +19,14 @@
         .error-message { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; margin-bottom: 15px; border-radius: 4px; }
         pre { background-color: #eee; padding: 10px; border-radius: 4px; overflow-x: auto; }
         code { font-family: monospace; background-color: #e9e9e9; padding: 2px 4px; border-radius: 3px; }
+        footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -36,6 +44,11 @@
         <% end %>
 
         <%= yield %>
+
+        <footer>
+            <p>&copy; <%= Time.now.year %> <a href="https://github.com/erikyuzwa/tiny-wiki-gem" target="_blank">Tiny Wiki Gem</a>. All rights reserved.</p>
+            <p>Powered by <a href="https://rubyonrails.org/" target="_blank">Ruby</a>, <a href="https://sinatrarb.com/" target="_blank">Sinatra</a>, and <a href="https://github.com/vmg/redcarpet" target="_blank">Redcarpet</a>.</p>
+        </footer>
     </div>
 </body>
 </html>

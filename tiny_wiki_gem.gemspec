@@ -1,0 +1,34 @@
+# tiny_wiki.gemspec
+# This file defines the gem's metadata, dependencies, and files.
+
+Gem::Specification.new do |spec|
+  spec.name          = "tiny_wiki_gem"
+  spec.version       = "0.1.0"
+  spec.authors       = ["Your Name"]
+  spec.email         = ["your@email.com"]
+
+  spec.summary       = "A simple Markdown-based wiki server gem."
+  spec.description   = "A Ruby gem that serves a wiki from Markdown files in a local directory."
+  spec.homepage      = "https://github.com/yourusername/tiny_wiki_gem" # Replace with your repo
+  spec.license       = "MIT"
+
+  # Specify which files should be added to the gem.
+  spec.files         = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split("\x0").reject do |f|
+      f.match(%r{^(test|spec|features)/})
+    end
+  end
+  spec.bindir        = "bin"
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+
+  # Define runtime dependencies
+  spec.add_runtime_dependency "sinatra", "~> 3.0"
+  spec.add_runtime_dependency "redcarpet", "~> 3.0"
+  spec.add_runtime_dependency "fileutils" # Typically included, but good to be explicit for clarity
+
+  # Define development dependencies (for testing, etc.)
+  spec.add_development_dependency "bundler", "~> 2.0"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "minitest", "~> 5.0"
+end

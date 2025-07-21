@@ -1,0 +1,6 @@
+<h1>Editing <%= @page_name.empty? ? 'New Page' : @page_name %></h1>
+
+<form action="/<%= URI.encode_www_form_component(@page_name) %>" method="post">
+    <textarea name="content"><%= @markdown_content %></textarea><br>
+    <input type="submit" value="Save Page">
+</form>

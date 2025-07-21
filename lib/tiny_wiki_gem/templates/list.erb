@@ -1,0 +1,11 @@
+<h1>All Wiki Pages</h1>
+
+<% if @pages.empty? %>
+    <p>No pages found. <a href="/Home/edit">Create your first page!</a></p>
+<% else %>
+    <ul>
+        <% @pages.each do |page| %>
+            <li><a href="/<%= URI.encode_www_form_component(page) %>"><%= page %></a></li>
+        <% end %>
+    </ul>
+<% end %>

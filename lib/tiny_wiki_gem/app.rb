@@ -15,7 +15,7 @@ module TinyWikiGem
     # Set the root directory for the Sinatra app (where templates are)
     set :root, File.expand_path('../..', __FILE__)
     # Set the views directory for ERB templates
-    set :views, File.join(settings.root, 'lib', 'my_wiki_gem', 'templates')
+    set :views, File.join(settings.root, 'tiny_wiki_gem', 'templates')
     # Enable sessions for flash messages (optional, but good for feedback)
     enable :sessions
 

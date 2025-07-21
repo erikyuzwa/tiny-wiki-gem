@@ -3,13 +3,16 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "tiny_wiki_gem"
-  spec.version       = "0.1.0"
-  spec.authors       = ["Your Name"]
-  spec.email         = ["your@email.com"]
+  spec.version       = "0.1.1"
+  spec.authors       = ["Erik Yuzwa"]
+  spec.email         = ["erikyuzwa@gmail.com"]
+
+  # This gem will work with 1.8.6 or greater...
+  spec.required_ruby_version = '>= 3.0'
 
   spec.summary       = "A simple Markdown-based wiki server gem."
   spec.description   = "A Ruby gem that serves a wiki from Markdown files in a local directory."
-  spec.homepage      = "https://github.com/yourusername/tiny_wiki_gem" # Replace with your repo
+  spec.homepage      = "https://github.com/erikyuzwa/tiny_wiki_gem" # Replace with your repo
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem.
@@ -25,7 +28,7 @@ Gem::Specification.new do |spec|
   # Define runtime dependencies
   spec.add_runtime_dependency "sinatra", "~> 3.0"
   spec.add_runtime_dependency "redcarpet", "~> 3.0"
-  spec.add_runtime_dependency "fileutils" # Typically included, but good to be explicit for clarity
+  spec.add_runtime_dependency "fileutils", "~> 1.7" # Typically included, but good to be explicit for clarity
 
   # Define development dependencies (for testing, etc.)
   spec.add_development_dependency "bundler", "~> 2.0"

@@ -1,4 +1,4 @@
-# tiny_wiki.gemspec
+# tiny_wiki_gem.gemspec
 # This file defines the gem's metadata, dependencies, and files.
 
 Gem::Specification.new do |spec|
@@ -7,12 +7,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Erik Yuzwa"]
   spec.email         = ["erikyuzwa@gmail.com"]
 
-  # This gem will work with 1.8.6 or greater...
+  # This gem will work with 3.0 or greater...
   spec.required_ruby_version = '>= 3.0'
 
   spec.summary       = "A simple Markdown-based wiki server gem."
   spec.description   = "A Ruby gem that serves a wiki from Markdown files in a local directory."
-  spec.homepage      = "https://github.com/erikyuzwa/tiny_wiki_gem" # Replace with your repo
+  spec.homepage      = "https://github.com/erikyuzwa/tiny-wiki-gem"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem.

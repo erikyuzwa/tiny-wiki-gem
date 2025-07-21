@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tiny_wiki_gem (0.1.0)
+    tiny_wiki (0.2.0)
       fileutils (~> 1.7)
       redcarpet (~> 3.0)
       sinatra (~> 3.0)
@@ -36,7 +36,7 @@ DEPENDENCIES
   bundler (~> 2.0)
   minitest (~> 5.0)
   rake (~> 13.0)
-  tiny_wiki_gem!
+  tiny_wiki!
 
 BUNDLED WITH
    2.6.9

@@ -2,12 +2,12 @@
 
 # This is the executable script that users will run to start your wiki server.
 
-require 'tiny_wiki_gem' # Require your gem's main file
+require 'tiny_wiki' # Require your gem's main file
 require 'optparse'    # For command-line argument parsing
 
 options = {}
 OptionParser.new do |opts|
-  opts.banner = "Usage: tiny_wiki_gem_server [options] <wiki_directory>"
+  opts.banner = "Usage: tiny_wiki_server [options] <wiki_directory>"
 
   opts.on("-p", "--port PORT", Integer, "Port to listen on (default: 4567)") do |p|
     options[:port] = p
@@ -28,7 +28,7 @@ wiki_directory = ARGV[0]
 
 unless wiki_directory
   puts "Error: You must specify a wiki directory."
-  puts "Usage: tiny_wiki_gem_server [options] <wiki_directory>"
+  puts "Usage: tiny_wiki_server [options] <wiki_directory>"
   exit 1
 end
 
@@ -39,16 +39,16 @@ unless File.directory?(wiki_directory)
 end
 
 # Set the wiki root path in the Sinatra application settings
-TinyWikiGem::App.set :wiki_root, File.expand_path(wiki_directory)
+TinyWiki::App.set :wiki_root, File.expand_path(wiki_directory)
 
 # Set optional port and bind address
-TinyWikiGem::App.set :port, options[:port] if options[:port]
-TinyWikiGem::App.set :bind, options[:bind] if options[:bind]
+TinyWiki::App.set :port, options[:port] if options[:port]
+TinyWiki::App.set :bind, options[:bind] if options[:bind]
 
-puts "Starting TinyWikiGem server..."
-puts "Wiki root: #{TinyWikiGem::App.settings.wiki_root}"
-puts "Listening on #{TinyWikiGem::App.settings.bind}:#{TinyWikiGem::App.settings.port}"
-puts "Access your wiki at: http://localhost:#{TinyWikiGem::App.settings.port}/"
+puts "Starting TinyWiki server..."
+puts "Wiki root: #{TinyWiki::App.settings.wiki_root}"
+puts "Listening on #{TinyWiki::App.settings.bind}:#{TinyWiki::App.settings.port}"
+puts "Access your wiki at: http://localhost:#{TinyWiki::App.settings.port}/"
 
 # Run the Sinatra application
-TinyWikiGem::App.run!
+TinyWiki::App.run!

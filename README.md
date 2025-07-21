@@ -1,13 +1,13 @@
-# Tiny Wiki Gem
+# Tiny Wiki
 
 This is (hopefully) small Ruby gem that you can use to launch and run your own little,
 tiny wiki server!
 
 ## Usage
 
-- `gem install tiny-wiki-gem`
+- `gem install tiny-wiki`
 - `mkdir <foldername>` (or place your markdown files in an existing folder)
-- `tiny_wiki_gem_server <foldername>` 
+- `tiny_wiki_server <foldername>` 
 
 That's it! Open your web browser to `http://localhost:4567`
 

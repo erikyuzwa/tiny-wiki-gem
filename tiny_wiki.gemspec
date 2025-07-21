@@ -1,9 +1,9 @@
-# tiny_wiki_gem.gemspec
+# tiny_wiki.gemspec
 # This file defines the gem's metadata, dependencies, and files.
 
 Gem::Specification.new do |spec|
-  spec.name          = "tiny_wiki_gem"
-  spec.version       = "0.1.1"
+  spec.name          = "tiny_wiki"
+  spec.version       = "0.2.0"
   spec.authors       = ["Erik Yuzwa"]
   spec.email         = ["erikyuzwa@gmail.com"]
 
@@ -16,14 +16,17 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem.
-  spec.files         = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      f.match(%r{^(test|spec|features)/})
-    end
-  end
-  spec.bindir        = "bin"
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  #spec.files         = Dir.chdir(File.expand_path(__dir__)) do
+  #  `git ls-files -z`.split("\x0").reject do |f|
+  #    f.match(%r{^(test|spec|features)/})
+  #  end
+  #end
+
+  spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH)
+
+  spec.bindir        = "exe"
+  spec.executables   = %w[tiny_wiki_server]
+  spec.require_paths = %w[lib]
 
   # Define runtime dependencies
   spec.add_runtime_dependency "sinatra", "~> 3.0"

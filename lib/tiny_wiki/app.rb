@@ -5,7 +5,7 @@ require 'redcarpet'
 require 'fileutils'
 require 'uri' # For URI encoding/decoding
 
-module TinyWikiGem
+module TinyWiki
   class App < Sinatra::Base
     # Configuration for the Sinatra app
     # Set the binding address to listen on all interfaces (0.0.0.0)
@@ -15,7 +15,7 @@ module TinyWikiGem
     # Set the root directory for the Sinatra app (where templates are)
     set :root, File.expand_path('../..', __FILE__)
     # Set the views directory for ERB templates
-    set :views, File.join(settings.root, 'tiny_wiki_gem', 'templates')
+    set :views, File.join(settings.root, 'tiny_wiki', 'templates')
     # Enable sessions for flash messages (optional, but good for feedback)
     enable :sessions
 

@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "tiny_wiki"
-  spec.version       = "0.2.0"
+  spec.version       = "0.3.0"
   spec.authors       = ["Erik Yuzwa"]
   spec.email         = ["erikyuzwa@gmail.com"]
 

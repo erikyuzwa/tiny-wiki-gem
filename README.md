@@ -3,6 +3,8 @@
 This is (hopefully) small Ruby gem that you can use to launch and run your own little,
 tiny wiki server!
 
+![a basic screenshot](./screenshot.png "Tiny Wiki Screenshot")
+
 ## Usage
 
 - `gem install tiny-wiki`

@@ -5,7 +5,7 @@
 <% else %>
     <ul>
         <% @pages.each do |page| %>
-            <li><a href="/<%= URI.encode_www_form_component(page) %>"><%= page %></a></li>
+            <li><a href="/<%= page %>"><%= page %></a></li>
         <% end %>
     </ul>
 <% end %>

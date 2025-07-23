@@ -17,6 +17,10 @@ OptionParser.new do |opts|
     options[:bind] = b
   end
 
+  opts.on("-d", "--debug", "Enable debug messages (verbose logging)") do |d|
+    options[:debug] = d
+  end
+
   opts.on("-h", "--help", "Prints this help") do
     puts opts
     exit
@@ -44,6 +48,9 @@ TinyWiki::App.set :wiki_root, File.expand_path(wiki_directory)
 # Set optional port and bind address
 TinyWiki::App.set :port, options[:port] if options[:port]
 TinyWiki::App.set :bind, options[:bind] if options[:bind]
+
+# Set the debug flag in the Sinatra application settings
+TinyWiki::App.set :debug, options[:debug] if options[:debug]
 
 puts "Starting TinyWiki server..."
 puts "Wiki root: #{TinyWiki::App.settings.wiki_root}"

@@ -19,6 +19,14 @@ module TinyWiki
     # Enable sessions for flash messages (optional, but good for feedback)
     enable :sessions
 
+    # Default debug setting
+    set :debug, false
+
+    # Helper for conditional debug logging
+    def debug_log(message)
+      puts "DEBUG: #{message}" if settings.debug
+    end
+
     # Custom Redcarpet renderer to handle wiki links (e.g., [[Page Name]])
     class WikiLinkRenderer < Redcarpet::Render::HTML
       # The postprocess method is called after all other rendering is complete.
@@ -147,7 +155,7 @@ module TinyWiki
     get '/*page_path/edit' do
       @page_name = URI.decode_www_form_component(params[:page_path])
       @markdown_content = read_page(@page_name) || "" # Empty string if new page
-      puts "DEBUG: Rendering edit form for page: #{@page_name}" # DEBUG
+      debug_log "Rendering edit form for page: #{@page_name}" # DEBUG
       erb :edit
     end
 
@@ -156,17 +164,17 @@ module TinyWiki
     post '/*page_path' do
       @page_name = URI.decode_www_form_component(params[:page_path])
       new_content = params[:content]
-      puts "DEBUG: POST request to save page: #{@page_name}" # DEBUG
-      puts "DEBUG: Content received: #{new_content.inspect}" # DEBUG
+      debug_log "POST request to save page: #{@page_name}" # DEBUG
+      debug_log "Content received: #{new_content.inspect}" # DEBUG
 
       if new_content && !new_content.strip.empty?
         write_page(@page_name, new_content)
         session[:message] = "Page '#{@page_name}' saved successfully!"
-        puts "DEBUG: Page saved, redirecting to /#{@page_name}" # DEBUG
+        debug_log "Page saved, redirecting to /#{@page_name}" # DEBUG
         redirect to("/#{@page_name}")
       else
         session[:message] = "Page content cannot be empty!"
-        puts "DEBUG: Empty content, redirecting to /#{@page_name}/edit" # DEBUG
+        debug_log "Empty content, redirecting to /#{@page_name}/edit" # DEBUG
         redirect to("/#{@page_name}/edit")
       end
     end
@@ -185,12 +193,10 @@ module TinyWiki
         session[:message] = "Page '#{@page_name}' does not exist. Create it!"
         # Ensure the page_name doesn't already end with '/edit' before redirecting
         clean_page_name_for_redirect = @page_name.sub(/\/edit$/, '')
-        puts "DEBUG: Redirecting to edit for non-existent page: /#{clean_page_name_for_redirect}/edit" # DEBUG
+        debug_log "Redirecting to edit for non-existent page: /#{clean_page_name_for_redirect}/edit" # DEBUG
         redirect to("/#{clean_page_name_for_redirect}/edit")
       end
     end
-
-    
 
     # Handle 404 errors (page not found)
     not_found do
